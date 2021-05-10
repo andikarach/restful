@@ -21,7 +21,7 @@ class MoviesController extends Controller
 
         if ($request->page == null) {
             $searchName = $request->title;
-            $movies = Http::get('https://omdbapi.com?apikey=69f42943&s='.$searchName);
+            $movies = Http::get('https://omdbapi.com?apikey=faf7e5bb&s='.$searchName);
             if ($movies['Response'] == 'True') {
                 $halaman = ceil(intval($movies['totalResults'])/10);
                 $current = 1;
@@ -31,11 +31,11 @@ class MoviesController extends Controller
             }
         } else {
             $searchName = $request->title;
-            $movie = Http::get('https://omdbapi.com?apikey=69f42943&s='.$searchName);
+            $movie = Http::get('https://omdbapi.com?apikey=faf7e5bb&s='.$searchName);
             if ($movie['Response'] == 'True') {
                 $halaman = ceil(intval($movie['totalResults'])/10);
 
-                $movies = Http::get('https://omdbapi.com?apikey=69f42943&s='.$searchName.'&page='.$request->page);
+                $movies = Http::get('https://omdbapi.com?apikey=faf7e5bb&s='.$searchName.'&page='.$request->page);
                 $current = $request->page;
             
             } else {
